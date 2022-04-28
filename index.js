@@ -30,6 +30,11 @@ server.listen(3000, () => console.log(`Running!`))
 
 app.post('/author', function (req, res) {    
     let author = req.body.author;
+
+    // to support multiple apis
+    // i would put this in external file and reference it with require, i would export in the nytimes.js file 2 methods, "create" and "get". 
+    // but for now i put it here
+
     request({
         uri: 'https://api.nytimes.com/svc/books/v3/reviews.json?author='+author+'&api-key='+API_KEY,
         method: 'GET'
