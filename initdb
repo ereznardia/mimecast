@@ -1,0 +1,23 @@
+CREATE DATABASE mimecast CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+use mimecast
+
+CREATE TABLE IF NOT EXISTS authors (
+         name         VARCHAR(128)   NOT NULL DEFAULT '',
+         UNIQUE  (name)
+       );
+       
+CREATE TABLE IF NOT EXISTS books (
+         name         VARCHAR(128)   NOT NULL DEFAULT '',
+         author_name         VARCHAR(128)   NOT NULL DEFAULT '',
+         UNIQUE  (name),
+         FOREIGN KEY (author_name) REFERENCES authors(name)
+       );
+
+CREATE TABLE IF NOT EXISTS reviews (
+         summary         VARCHAR(4096)   NOT NULL DEFAULT '',
+         book_name         VARCHAR(128)   NOT NULL DEFAULT '',
+         FOREIGN KEY (book_name) REFERENCES books(name)
+       );
+
+// 20 minutes
